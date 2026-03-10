@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In | Yurimio</title>
+  <title>Sign In — Yurimio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -33,127 +33,118 @@
     html { scroll-behavior: smooth; }
     body { background-color: #000; }
     ::selection { background-color: #C8A84E; color: #000; }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    nav { transition: height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; }
+    nav.scrolled { background-color: rgba(0,0,0,0.97); border-color: rgba(200,168,78,0.12); }
+    nav.scrolled .nav-inner { height: 52px; }
+    .nav-inner { transition: height 0.3s ease; }
+    input:focus { border-color: #C8A84E !important; }
   </style>
 </head>
 <body class="bg-black text-white font-sans antialiased">
 
   <!-- ========== NAV ========== -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-neutral-900">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
-      <a href="index.html" class="font-serif text-lg tracking-ultra-wide text-white hover:text-gold transition-colors">YURIMIO</a>
-      <div class="hidden sm:flex items-center gap-8">
-        <a href="shop.html" class="text-[11px] tracking-ultra-wide uppercase text-neutral-400 hover:text-gold transition-colors">Shop</a>
-        <a href="cart.html" class="relative flex items-center gap-2 text-neutral-400 hover:text-gold transition-colors">
+  <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-neutral-900/50">
+    <div class="nav-inner max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
+      <div class="flex items-center w-1/3">
+        <a href="shop.html" class="text-[11px] tracking-ultra-wide uppercase text-neutral-400 hover:text-gold transition-colors duration-300">Shop</a>
+      </div>
+      <div class="flex items-center justify-center w-1/3">
+        <a href="index.html" class="font-serif text-lg sm:text-xl tracking-ultra-wide text-white hover:text-gold transition-colors duration-300">YURIMIO</a>
+      </div>
+      <div class="hidden sm:flex items-center justify-end gap-7 w-1/3">
+        <a href="login.html" class="text-[11px] tracking-ultra-wide uppercase text-gold transition-colors duration-300 nav-auth-link">Sign In</a>
+        <a href="cart.html" class="relative flex items-center gap-1.5 text-neutral-400 hover:text-gold transition-colors duration-300">
           <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
           <span class="cart-count text-[10px] font-semibold text-gold">0</span>
         </a>
-        <a href="login.html" class="text-[11px] tracking-ultra-wide uppercase text-gold transition-colors nav-auth-link">Sign In</a>
       </div>
-      <button id="mobile-menu-btn" class="sm:hidden text-neutral-400 hover:text-gold transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/></svg>
-      </button>
+      <div class="flex sm:hidden items-center gap-4 w-1/3 justify-end">
+        <a href="cart.html" class="relative flex items-center gap-1.5 text-neutral-400 hover:text-gold transition-colors">
+          <svg class="w-[17px] h-[17px]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="cart-count text-[10px] font-semibold text-gold">0</span>
+        </a>
+        <button id="mobile-menu-btn" class="text-neutral-400 hover:text-gold transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/></svg>
+        </button>
+      </div>
     </div>
-    <div id="mobile-menu" class="sm:hidden hidden border-t border-neutral-900 bg-black/95 backdrop-blur-md">
-      <div class="px-5 py-6 flex flex-col gap-5">
-        <a href="shop.html" class="text-sm tracking-ultra-wide uppercase text-neutral-300 hover:text-gold transition-colors">Shop</a>
-        <a href="cart.html" class="text-sm tracking-ultra-wide uppercase text-neutral-300 hover:text-gold transition-colors flex items-center gap-3">Cart <span class="cart-count text-gold text-xs">0</span></a>
-        <a href="login.html" class="text-sm tracking-ultra-wide uppercase text-gold transition-colors nav-auth-link">Sign In</a>
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-neutral-900/50 bg-black/97 backdrop-blur-md">
+      <div class="px-5 py-5 flex flex-col gap-4">
+        <a href="shop.html" class="text-xs tracking-ultra-wide uppercase text-neutral-300 hover:text-gold transition-colors">Shop</a>
+        <a href="login.html" class="text-xs tracking-ultra-wide uppercase text-gold transition-colors nav-auth-link">Sign In</a>
       </div>
     </div>
   </nav>
 
-  <!-- ========== AUTH FORM ========== -->
-  <div class="min-h-screen flex items-center justify-center px-5 pt-16">
-    <div class="w-full max-w-sm">
+  <!-- ========== AUTH ========== -->
+  <section class="pt-28 sm:pt-32 pb-20 md:pb-32 px-5 sm:px-8">
+    <div class="max-w-sm mx-auto">
 
-      <!-- Sign In Form -->
-      <div id="signin-form">
-        <h1 class="font-serif text-3xl sm:text-4xl font-light tracking-ultra-wide text-white mb-2 text-center">SIGN IN</h1>
-        <p class="text-neutral-500 text-xs text-center mb-10 tracking-wide">Access your Yurimio account</p>
-
-        <div class="space-y-5 mb-8">
-          <div>
-            <label class="block text-[10px] tracking-ultra-wide uppercase text-neutral-500 font-semibold mb-2">Email</label>
-            <input type="email" id="login-email"
-              class="w-full bg-transparent border border-neutral-800 text-white text-sm px-4 py-3 focus:border-gold outline-none transition-colors placeholder:text-neutral-700"
-              placeholder="your@email.com">
-          </div>
-          <div>
-            <label class="block text-[10px] tracking-ultra-wide uppercase text-neutral-500 font-semibold mb-2">Password</label>
-            <input type="password" id="login-password"
-              class="w-full bg-transparent border border-neutral-800 text-white text-sm px-4 py-3 focus:border-gold outline-none transition-colors placeholder:text-neutral-700"
-              placeholder="••••••••">
-          </div>
+      <!-- SIGN IN FORM -->
+      <div id="signin-view">
+        <h1 class="reveal font-serif text-2xl sm:text-3xl md:text-4xl font-light tracking-ultra-wide text-white mb-10 text-center">SIGN IN</h1>
+        <div id="signin-error" class="hidden text-red-400 text-xs text-center mb-6 tracking-wide"></div>
+        <div class="reveal reveal-delay-1 space-y-5 mb-8">
+          <input type="email" id="signin-email" placeholder="Email" autocomplete="email"
+            class="w-full bg-transparent text-neutral-300 text-sm pb-3 border-b border-neutral-700 outline-none transition-colors duration-300 placeholder:text-neutral-600">
+          <input type="password" id="signin-password" placeholder="Password" autocomplete="current-password"
+            class="w-full bg-transparent text-neutral-300 text-sm pb-3 border-b border-neutral-700 outline-none transition-colors duration-300 placeholder:text-neutral-600">
         </div>
-
-        <p id="login-error" class="text-red-400 text-xs mb-4 text-center hidden"></p>
-
-        <button id="login-btn" class="w-full bg-gold text-black font-sans text-xs font-semibold tracking-ultra-wide uppercase py-4 hover:bg-gold-light transition-colors duration-300 mb-6">
-          SIGN IN
-        </button>
-
-        <p class="text-center text-neutral-500 text-xs">
-          Don't have an account?
-          <button id="show-register" class="text-gold hover:text-gold-light transition-colors ml-1">Create one</button>
+        <div class="reveal reveal-delay-2">
+          <button id="signin-btn" class="w-full bg-gold text-black font-sans text-xs font-semibold tracking-ultra-wide uppercase px-10 py-4 hover:bg-gold-light transition-all duration-300">
+            SIGN IN
+          </button>
+        </div>
+        <p class="reveal reveal-delay-2 text-center text-neutral-500 text-xs mt-8">
+          Don't have an account? <button id="show-signup" class="text-gold hover:text-gold-light transition-colors underline underline-offset-2">Create one</button>
         </p>
       </div>
 
-      <!-- Register Form -->
-      <div id="register-form" class="hidden">
-        <h1 class="font-serif text-3xl sm:text-4xl font-light tracking-ultra-wide text-white mb-2 text-center">CREATE ACCOUNT</h1>
-        <p class="text-neutral-500 text-xs text-center mb-10 tracking-wide">Join the Yurimio experience</p>
-
-        <div class="space-y-5 mb-8">
-          <div>
-            <label class="block text-[10px] tracking-ultra-wide uppercase text-neutral-500 font-semibold mb-2">Full Name</label>
-            <input type="text" id="register-name"
-              class="w-full bg-transparent border border-neutral-800 text-white text-sm px-4 py-3 focus:border-gold outline-none transition-colors placeholder:text-neutral-700"
-              placeholder="Your name">
-          </div>
-          <div>
-            <label class="block text-[10px] tracking-ultra-wide uppercase text-neutral-500 font-semibold mb-2">Email</label>
-            <input type="email" id="register-email"
-              class="w-full bg-transparent border border-neutral-800 text-white text-sm px-4 py-3 focus:border-gold outline-none transition-colors placeholder:text-neutral-700"
-              placeholder="your@email.com">
-          </div>
-          <div>
-            <label class="block text-[10px] tracking-ultra-wide uppercase text-neutral-500 font-semibold mb-2">Password</label>
-            <input type="password" id="register-password"
-              class="w-full bg-transparent border border-neutral-800 text-white text-sm px-4 py-3 focus:border-gold outline-none transition-colors placeholder:text-neutral-700"
-              placeholder="••••••••">
-          </div>
+      <!-- CREATE ACCOUNT FORM -->
+      <div id="signup-view" class="hidden">
+        <h1 class="reveal font-serif text-2xl sm:text-3xl md:text-4xl font-light tracking-ultra-wide text-white mb-10 text-center">CREATE ACCOUNT</h1>
+        <div id="signup-error" class="hidden text-red-400 text-xs text-center mb-6 tracking-wide"></div>
+        <div class="reveal reveal-delay-1 space-y-5 mb-8">
+          <input type="text" id="signup-name" placeholder="Full Name" autocomplete="name"
+            class="w-full bg-transparent text-neutral-300 text-sm pb-3 border-b border-neutral-700 outline-none transition-colors duration-300 placeholder:text-neutral-600">
+          <input type="email" id="signup-email" placeholder="Email" autocomplete="email"
+            class="w-full bg-transparent text-neutral-300 text-sm pb-3 border-b border-neutral-700 outline-none transition-colors duration-300 placeholder:text-neutral-600">
+          <input type="password" id="signup-password" placeholder="Password (6+ characters)" autocomplete="new-password"
+            class="w-full bg-transparent text-neutral-300 text-sm pb-3 border-b border-neutral-700 outline-none transition-colors duration-300 placeholder:text-neutral-600">
         </div>
-
-        <p id="register-error" class="text-red-400 text-xs mb-4 text-center hidden"></p>
-
-        <button id="register-btn" class="w-full bg-gold text-black font-sans text-xs font-semibold tracking-ultra-wide uppercase py-4 hover:bg-gold-light transition-colors duration-300 mb-6">
-          CREATE ACCOUNT
-        </button>
-
-        <p class="text-center text-neutral-500 text-xs">
-          Already have an account?
-          <button id="show-login" class="text-gold hover:text-gold-light transition-colors ml-1">Sign in</button>
+        <div class="reveal reveal-delay-2">
+          <button id="signup-btn" class="w-full bg-gold text-black font-sans text-xs font-semibold tracking-ultra-wide uppercase px-10 py-4 hover:bg-gold-light transition-all duration-300">
+            CREATE ACCOUNT
+          </button>
+        </div>
+        <p class="reveal reveal-delay-2 text-center text-neutral-500 text-xs mt-8">
+          Already have an account? <button id="show-signin" class="text-gold hover:text-gold-light transition-colors underline underline-offset-2">Sign in</button>
         </p>
       </div>
 
-      <!-- Logged In State -->
-      <div id="loggedin-state" class="hidden text-center">
-        <h1 class="font-serif text-3xl sm:text-4xl font-light tracking-ultra-wide text-white mb-2">WELCOME BACK</h1>
-        <p id="user-display-name" class="text-gold text-sm mb-10"></p>
-
-        <a href="shop.html" class="block w-full bg-gold text-black font-sans text-xs font-semibold tracking-ultra-wide uppercase py-4 hover:bg-gold-light transition-colors duration-300 mb-4 text-center">
-          CONTINUE SHOPPING
-        </a>
-        <button id="logout-btn" class="w-full border border-neutral-800 text-neutral-400 font-sans text-xs font-semibold tracking-ultra-wide uppercase py-3.5 hover:border-red-900 hover:text-red-400 transition-colors duration-300">
-          SIGN OUT
-        </button>
+      <!-- LOGGED IN VIEW -->
+      <div id="loggedin-view" class="hidden text-center">
+        <h1 class="reveal font-serif text-2xl sm:text-3xl md:text-4xl font-light tracking-ultra-wide text-white mb-4">WELCOME BACK</h1>
+        <p id="user-display-name" class="reveal reveal-delay-1 text-gold font-serif text-lg italic mb-10"></p>
+        <div class="reveal reveal-delay-2 flex flex-col gap-4">
+          <a href="shop.html" class="w-full bg-gold text-black font-sans text-xs font-semibold tracking-ultra-wide uppercase px-10 py-4 hover:bg-gold-light transition-all duration-300 text-center">
+            SHOP NOW
+          </a>
+          <button id="signout-btn" class="w-full border border-white/30 text-white font-sans text-xs font-semibold tracking-ultra-wide uppercase px-10 py-3.5 hover:border-gold hover:text-gold transition-all duration-300">
+            SIGN OUT
+          </button>
+        </div>
       </div>
 
     </div>
-  </div>
+  </section>
 
   <!-- ========== FOOTER ========== -->
-  <footer class="py-10 px-5 border-t border-neutral-900">
+  <footer class="py-10 px-5 border-t border-neutral-900/50">
     <div class="max-w-4xl mx-auto text-center">
       <p class="text-neutral-700 text-[10px] sm:text-xs tracking-wider">&copy; 2026 Yurimio. All rights reserved.</p>
     </div>
@@ -161,105 +152,92 @@
 
   <script src="js/main.js"></script>
   <script>
-    const signinForm = document.getElementById('signin-form');
-    const registerForm = document.getElementById('register-form');
-    const loggedinState = document.getElementById('loggedin-state');
+    document.addEventListener('DOMContentLoaded', () => {
+      const signinView = document.getElementById('signin-view');
+      const signupView = document.getElementById('signup-view');
+      const loggedinView = document.getElementById('loggedin-view');
+      const signinError = document.getElementById('signin-error');
+      const signupError = document.getElementById('signup-error');
 
-    function showView() {
+      function showView(view) {
+        [signinView, signupView, loggedinView].forEach(v => v.classList.add('hidden'));
+        view.classList.remove('hidden');
+        // Re-trigger reveals
+        view.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+      }
+
+      // Check if already logged in
       const user = window.YurimioAuth.getUser();
       if (user) {
-        signinForm.classList.add('hidden');
-        registerForm.classList.add('hidden');
-        loggedinState.classList.remove('hidden');
-        document.getElementById('user-display-name').textContent = user.name || user.email;
-      } else {
-        loggedinState.classList.add('hidden');
+        document.getElementById('user-display-name').textContent = user.name;
+        showView(loggedinView);
       }
-    }
 
-    // Toggle forms
-    document.getElementById('show-register').addEventListener('click', () => {
-      signinForm.classList.add('hidden');
-      registerForm.classList.remove('hidden');
+      // Tab switching
+      document.getElementById('show-signup').addEventListener('click', () => showView(signupView));
+      document.getElementById('show-signin').addEventListener('click', () => showView(signinView));
+
+      // Sign In
+      document.getElementById('signin-btn').addEventListener('click', () => {
+        const email = document.getElementById('signin-email').value.trim();
+        const password = document.getElementById('signin-password').value;
+
+        signinError.classList.add('hidden');
+        if (!email || !password) {
+          signinError.textContent = 'Please fill in all fields.';
+          signinError.classList.remove('hidden');
+          return;
+        }
+
+        const result = window.YurimioAuth.signIn(email, password);
+        if (result.error) {
+          signinError.textContent = result.error;
+          signinError.classList.remove('hidden');
+          return;
+        }
+
+        document.getElementById('user-display-name').textContent = result.user.name;
+        showView(loggedinView);
+        window.YurimioAuth.updateNavLinks();
+      });
+
+      // Sign Up
+      document.getElementById('signup-btn').addEventListener('click', () => {
+        const name = document.getElementById('signup-name').value.trim();
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value;
+
+        signupError.classList.add('hidden');
+        if (!name || !email || !password) {
+          signupError.textContent = 'Please fill in all fields.';
+          signupError.classList.remove('hidden');
+          return;
+        }
+        if (password.length < 6) {
+          signupError.textContent = 'Password must be at least 6 characters.';
+          signupError.classList.remove('hidden');
+          return;
+        }
+
+        const result = window.YurimioAuth.createAccount(name, email, password);
+        if (result.error) {
+          signupError.textContent = result.error;
+          signupError.classList.remove('hidden');
+          return;
+        }
+
+        document.getElementById('user-display-name').textContent = result.user.name;
+        showView(loggedinView);
+        window.YurimioAuth.updateNavLinks();
+      });
+
+      // Sign Out
+      document.getElementById('signout-btn').addEventListener('click', () => {
+        window.YurimioAuth.signOut();
+        showView(signinView);
+        window.YurimioAuth.updateNavLinks();
+      });
     });
-    document.getElementById('show-login').addEventListener('click', () => {
-      registerForm.classList.add('hidden');
-      signinForm.classList.remove('hidden');
-    });
-
-    // Sign In
-    document.getElementById('login-btn').addEventListener('click', () => {
-      const email = document.getElementById('login-email').value.trim();
-      const password = document.getElementById('login-password').value;
-      const errorEl = document.getElementById('login-error');
-
-      if (!email || !password) {
-        errorEl.textContent = 'Please fill in all fields.';
-        errorEl.classList.remove('hidden');
-        return;
-      }
-
-      // Demo: check against stored accounts
-      const accounts = JSON.parse(localStorage.getItem('yurimio_accounts') || '[]');
-      const account = accounts.find(a => a.email === email);
-      if (!account || account.password !== password) {
-        errorEl.textContent = 'Invalid email or password.';
-        errorEl.classList.remove('hidden');
-        return;
-      }
-
-      errorEl.classList.add('hidden');
-      window.YurimioAuth.setUser({ name: account.name, email: account.email });
-      window.YurimioAuth.updateNav();
-      showView();
-    });
-
-    // Register
-    document.getElementById('register-btn').addEventListener('click', () => {
-      const name = document.getElementById('register-name').value.trim();
-      const email = document.getElementById('register-email').value.trim();
-      const password = document.getElementById('register-password').value;
-      const errorEl = document.getElementById('register-error');
-
-      if (!name || !email || !password) {
-        errorEl.textContent = 'Please fill in all fields.';
-        errorEl.classList.remove('hidden');
-        return;
-      }
-      if (password.length < 6) {
-        errorEl.textContent = 'Password must be at least 6 characters.';
-        errorEl.classList.remove('hidden');
-        return;
-      }
-
-      // Demo: store in localStorage
-      const accounts = JSON.parse(localStorage.getItem('yurimio_accounts') || '[]');
-      if (accounts.find(a => a.email === email)) {
-        errorEl.textContent = 'An account with this email already exists.';
-        errorEl.classList.remove('hidden');
-        return;
-      }
-
-      accounts.push({ name, email, password });
-      localStorage.setItem('yurimio_accounts', JSON.stringify(accounts));
-
-      errorEl.classList.add('hidden');
-      window.YurimioAuth.setUser({ name, email });
-      window.YurimioAuth.updateNav();
-      showView();
-    });
-
-    // Logout
-    document.getElementById('logout-btn').addEventListener('click', () => {
-      window.YurimioAuth.logout();
-      window.YurimioAuth.updateNav();
-      loggedinState.classList.add('hidden');
-      signinForm.classList.remove('hidden');
-      document.getElementById('login-email').value = '';
-      document.getElementById('login-password').value = '';
-    });
-
-    showView();
   </script>
 </body>
 </html>

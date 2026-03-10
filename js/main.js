@@ -1,152 +1,173 @@
-// ================================
-// Colognes by Yurimio — Shared JS
-// ================================
+/* =============================================
+   Yurimio — Shared JavaScript
+   ============================================= */
 
-// --- Cart (localStorage) ---
+/* ---------- Cart (localStorage) ---------- */
 window.YurimioCart = {
+  _key: 'yurimio_cart',
   get() {
-    return JSON.parse(localStorage.getItem('yurimio_cart') || '[]');
+    try { return JSON.parse(localStorage.getItem(this._key)) || []; }
+    catch { return []; }
   },
-  save(cart) {
-    localStorage.setItem('yurimio_cart', JSON.stringify(cart));
+  save(items) {
+    localStorage.setItem(this._key, JSON.stringify(items));
   },
-  add(product, qty = 1) {
-    const cart = this.get();
-    const existing = cart.find(i => i.id === product.id);
+  add(item) {
+    const items = this.get();
+    const existing = items.find(i => i.id === item.id);
     if (existing) {
-      existing.quantity += qty;
+      existing.qty = Math.min(10, existing.qty + item.qty);
     } else {
-      cart.push({ ...product, quantity: qty });
+      items.push({ id: item.id, name: item.name, price: item.price, image: item.image, qty: item.qty });
     }
-    this.save(cart);
+    this.save(items);
   },
   updateAllCounts() {
-    const cart = this.get();
-    const total = cart.reduce((s, i) => s + i.quantity, 0);
-    document.querySelectorAll('.cart-count').forEach(el => {
-      el.textContent = total;
-    });
+    const items = this.get();
+    const total = items.reduce((sum, i) => sum + i.qty, 0);
+    document.querySelectorAll('.cart-count').forEach(el => { el.textContent = total; });
   }
 };
 
-// --- Auth (localStorage demo — replace with Firebase Auth in production) ---
+/* ---------- Auth (localStorage demo) ---------- */
 window.YurimioAuth = {
+  _userKey: 'yurimio_user',
+  _accountsKey: 'yurimio_accounts',
+
   getUser() {
-    return JSON.parse(localStorage.getItem('yurimio_user') || 'null');
+    try { return JSON.parse(localStorage.getItem(this._userKey)); }
+    catch { return null; }
   },
-  setUser(user) {
-    localStorage.setItem('yurimio_user', JSON.stringify(user));
+
+  _getAccounts() {
+    try { return JSON.parse(localStorage.getItem(this._accountsKey)) || []; }
+    catch { return []; }
   },
-  logout() {
-    localStorage.removeItem('yurimio_user');
+
+  createAccount(name, email, password) {
+    const accounts = this._getAccounts();
+    if (accounts.find(a => a.email === email)) {
+      return { error: 'An account with this email already exists.' };
+    }
+    const user = { name, email, password };
+    accounts.push(user);
+    localStorage.setItem(this._accountsKey, JSON.stringify(accounts));
+    const safeUser = { name, email };
+    localStorage.setItem(this._userKey, JSON.stringify(safeUser));
+    return { user: safeUser };
   },
-  updateNav() {
+
+  signIn(email, password) {
+    const accounts = this._getAccounts();
+    const account = accounts.find(a => a.email === email && a.password === password);
+    if (!account) return { error: 'Invalid email or password.' };
+    const safeUser = { name: account.name, email: account.email };
+    localStorage.setItem(this._userKey, JSON.stringify(safeUser));
+    return { user: safeUser };
+  },
+
+  signOut() {
+    localStorage.removeItem(this._userKey);
+  },
+
+  updateNavLinks() {
     const user = this.getUser();
-    document.querySelectorAll('.nav-auth-link').forEach(el => {
+    document.querySelectorAll('.nav-auth-link').forEach(link => {
       if (user) {
-        el.textContent = user.name || 'Account';
-        el.classList.add('text-gold');
-        el.classList.remove('text-neutral-400', 'text-neutral-300');
+        link.textContent = user.name.split(' ')[0];
+        link.href = 'login.html';
       } else {
-        el.textContent = 'Sign In';
-        el.classList.remove('text-gold');
+        link.textContent = 'Sign In';
+        link.href = 'login.html';
       }
     });
   }
 };
 
-// --- Mobile Menu Toggle ---
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-if (mobileMenuBtn && mobileMenu) {
-  mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-  // Close menu on link click
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-  });
-}
-
-// --- Video Player (index.html) ---
-const video = document.getElementById('showcase-video');
-const playBtn = document.getElementById('video-play-btn');
-const muteBtn = document.getElementById('video-mute-btn');
-const muteIcon = document.getElementById('mute-icon');
-const unmuteIcon = document.getElementById('unmute-icon');
-
-if (video && playBtn) {
-  playBtn.addEventListener('click', () => {
-    video.muted = false;
-    video.play();
-    playBtn.style.opacity = '0';
-    playBtn.style.pointerEvents = 'none';
-    if (muteBtn) {
-      muteBtn.classList.remove('hidden');
-      muteBtn.classList.add('flex');
-      // Show unmute icon (audio is on)
-      if (muteIcon) muteIcon.classList.add('hidden');
-      if (unmuteIcon) unmuteIcon.classList.remove('hidden');
-    }
-  });
-
-  // Click video to pause/play
-  video.addEventListener('click', () => {
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  });
-}
-
-if (muteBtn && video) {
-  muteBtn.addEventListener('click', () => {
-    video.muted = !video.muted;
-    if (video.muted) {
-      if (muteIcon) { muteIcon.classList.remove('hidden'); }
-      if (unmuteIcon) { unmuteIcon.classList.add('hidden'); }
-    } else {
-      if (muteIcon) { muteIcon.classList.add('hidden'); }
-      if (unmuteIcon) { unmuteIcon.classList.remove('hidden'); }
-    }
-  });
-}
-
-// --- Notify Me (index.html) ---
-const notifyBtn = document.getElementById('notify-btn');
-const emailInput = document.getElementById('email-input');
-if (notifyBtn && emailInput) {
-  notifyBtn.addEventListener('click', () => {
-    const email = emailInput.value.trim();
-    if (!email || !email.includes('@')) {
-      emailInput.classList.add('border-red-500');
-      emailInput.focus();
-      setTimeout(() => emailInput.classList.remove('border-red-500'), 2000);
-      return;
-    }
-    notifyBtn.textContent = 'SUBSCRIBED ✓';
-    notifyBtn.classList.remove('border-white/30', 'text-white');
-    notifyBtn.classList.add('border-gold', 'text-gold');
-    notifyBtn.disabled = true;
-    emailInput.value = '';
-    emailInput.disabled = true;
-  });
-}
-
-// --- Smooth scroll for anchor links ---
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', (e) => {
-    const target = document.querySelector(anchor.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
-
-// --- Init on every page ---
+/* ---------- DOM Ready ---------- */
 document.addEventListener('DOMContentLoaded', () => {
+
+  /* --- Cart badge --- */
   window.YurimioCart.updateAllCounts();
-  window.YurimioAuth.updateNav();
+
+  /* --- Auth nav update --- */
+  window.YurimioAuth.updateNavLinks();
+
+  /* --- Mobile menu --- */
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  /* --- Navbar scroll effect --- */
+  const nav = document.getElementById('main-nav');
+  if (nav) {
+    const onScroll = () => {
+      if (window.scrollY > 40) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* --- Scroll reveal animations --- */
+  const revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  }
+
+  /* --- Video autoplay on scroll --- */
+  const video = document.getElementById('showcase-video');
+  if (video) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.25 });
+
+    videoObserver.observe(video);
+  }
+
+  /* --- Email notify button --- */
+  const notifyBtn = document.getElementById('notify-btn');
+  const emailInput = document.getElementById('email-input');
+  if (notifyBtn && emailInput) {
+    notifyBtn.addEventListener('click', () => {
+      const email = emailInput.value.trim();
+      if (!email || !email.includes('@')) {
+        notifyBtn.textContent = 'ENTER A VALID EMAIL';
+        notifyBtn.classList.add('text-red-400', 'border-red-400/50');
+        setTimeout(() => {
+          notifyBtn.textContent = 'NOTIFY ME';
+          notifyBtn.classList.remove('text-red-400', 'border-red-400/50');
+        }, 2000);
+        return;
+      }
+      notifyBtn.textContent = 'YOU\'RE ON THE LIST';
+      notifyBtn.classList.remove('hover:border-gold', 'hover:text-gold');
+      notifyBtn.classList.add('border-gold', 'text-gold');
+      emailInput.value = '';
+      emailInput.disabled = true;
+      notifyBtn.disabled = true;
+    });
+  }
 });
