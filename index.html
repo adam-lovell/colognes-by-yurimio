@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yurimio — What's mine is forever yours!</title>
+  <meta name="description" content="Yurimio — Premium handcrafted colognes. Authenticity is the cornerstone.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#C8A84E',
+            'gold-dark': '#A8893A',
+            'gold-light': '#D4B85A',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            'ultra-wide': '0.35em',
+            'mega-wide': '0.5em',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #000; }
+    ::selection { background-color: #C8A84E; color: #000; }
+  </style>
+</head>
+<body class="bg-black text-white font-sans antialiased">
+
+  <!-- ========== NAV ========== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-neutral-900">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
+      <a href="index.html" class="font-serif text-lg tracking-ultra-wide text-white hover:text-gold transition-colors">YURIMIO</a>
+      <!-- Desktop Nav -->
+      <div class="hidden sm:flex items-center gap-8">
+        <a href="shop.html" class="text-[11px] tracking-ultra-wide uppercase text-neutral-400 hover:text-gold transition-colors">Shop</a>
+        <a href="cart.html" class="relative flex items-center gap-2 text-neutral-400 hover:text-gold transition-colors">
+          <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="cart-count text-[10px] font-semibold text-gold">0</span>
+        </a>
+        <a href="login.html" class="text-[11px] tracking-ultra-wide uppercase text-neutral-400 hover:text-gold transition-colors nav-auth-link">Sign In</a>
+      </div>
+      <!-- Mobile Hamburger -->
+      <button id="mobile-menu-btn" class="sm:hidden text-neutral-400 hover:text-gold transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/></svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-neutral-900 bg-black/95 backdrop-blur-md">
+      <div class="px-5 py-6 flex flex-col gap-5">
+        <a href="shop.html" class="text-sm tracking-ultra-wide uppercase text-neutral-300 hover:text-gold transition-colors">Shop</a>
+        <a href="cart.html" class="text-sm tracking-ultra-wide uppercase text-neutral-300 hover:text-gold transition-colors flex items-center gap-3">Cart <span class="cart-count text-gold text-xs">0</span></a>
+        <a href="login.html" class="text-sm tracking-ultra-wide uppercase text-neutral-300 hover:text-gold transition-colors nav-auth-link">Sign In</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="min-h-screen flex flex-col items-center justify-center px-6 text-center pt-16">
+    <!-- Brand Silhouette -->
+    <div class="mb-8">
+      <svg viewBox="0 0 120 400" xmlns="http://www.w3.org/2000/svg" fill="#C8A84E" class="w-20 sm:w-24 md:w-32 h-auto mx-auto drop-shadow-[0_0_40px_rgba(200,168,78,0.15)]">
+        <path d="M35 40 C35 12 85 12 85 40 Z"/>
+        <ellipse cx="60" cy="42" rx="48" ry="9"/>
+        <ellipse cx="60" cy="66" rx="16" ry="18"/>
+        <rect x="54" y="82" width="12" height="8" rx="2"/>
+        <path d="M28 90 C44 86 76 86 92 90 L87 182 C85 188 35 188 33 182 Z"/>
+        <path d="M28 90 C18 122 16 150 22 160 C26 164 34 152 36 120 Z"/>
+        <path d="M92 90 C100 118 104 148 100 158 C96 162 90 150 88 120 Z"/>
+        <rect x="35" y="180" width="50" height="5" rx="2" fill="#A8893A"/>
+        <path d="M40 185 L34 316 L30 336 L56 336 L52 316 L52 185 Z"/>
+        <path d="M60 185 L68 302 L78 328 L82 342 Q70 350 62 342 L58 326 L54 302 L54 185 Z"/>
+        <path d="M30 334 L24 350 Q22 356 58 356 L56 334 Z"/>
+        <path d="M62 340 L82 342 Q88 352 62 360 Q56 356 60 342 Z"/>
+      </svg>
+    </div>
+
+    <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-ultra-wide sm:tracking-mega-wide text-white mb-4">
+      Y U R I M I O
+    </h1>
+
+    <p class="font-serif text-base sm:text-lg md:text-xl italic text-gold mb-12 md:mb-16">
+      What's mine is forever yours!
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full max-w-md sm:max-w-none sm:w-auto">
+      <a href="shop.html" class="w-full sm:w-auto bg-gold text-black font-sans text-xs sm:text-sm font-semibold tracking-ultra-wide uppercase px-10 sm:px-14 py-4 hover:bg-gold-light transition-colors duration-300 text-center">
+        BUY NOW
+      </a>
+      <a href="#fragrance" class="w-full sm:w-auto border border-white/30 text-white font-sans text-xs sm:text-sm font-semibold tracking-ultra-wide uppercase px-10 sm:px-14 py-4 hover:border-gold hover:text-gold transition-colors duration-300 text-center">
+        DISCOVER THE SCENT
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== FOUNDER ========== -->
+  <section class="py-20 md:py-32 px-5 sm:px-8 border-t border-neutral-900">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
+      <div class="aspect-[3/4] bg-neutral-950 border border-neutral-800 overflow-hidden max-w-md mx-auto md:max-w-none w-full">
+        <img src="images/mr-yurimio-founder-image.JPEG" alt="Mr. Yurimio — Founder" class="w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="text-center md:text-left">
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-5xl font-light tracking-ultra-wide text-gold mb-6 md:mb-8">
+          A LEGACY IN THE MAKING
+        </h2>
+        <p class="text-neutral-300 text-sm sm:text-base md:text-lg leading-relaxed font-light max-w-lg mx-auto md:mx-0">
+          From the very beginning, authenticity has been the cornerstone.
+          This is not just a scent—it is a journey, a promise, and a legacy
+          passed from one moment to the next. Crafted with intention,
+          designed to endure, Yurimio embodies what it means to create
+          something truly yours, forever.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== THE FRAGRANCE ========== -->
+  <section id="fragrance" class="py-20 md:py-32 px-5 sm:px-8 border-t border-neutral-900">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-serif text-2xl sm:text-3xl md:text-5xl font-light tracking-ultra-wide text-white mb-6 md:mb-8">
+        THE FRAGRANCE
+      </h2>
+      <p class="font-serif text-sm sm:text-base md:text-lg italic text-neutral-300 leading-relaxed max-w-2xl mx-auto mb-12 md:mb-16">
+        How it Smells — A luminous opening that settles into warmth, then lingers
+        with depth and intention. Unmistakably distinct, quietly confident.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 border-t border-neutral-800">
+        <div class="py-8 sm:py-10 sm:border-r border-b sm:border-b-0 border-neutral-800 text-left sm:pr-8">
+          <h3 class="text-[11px] sm:text-xs tracking-ultra-wide uppercase text-gold font-sans font-semibold mb-3">TOP NOTES</h3>
+          <p class="text-neutral-500 text-sm">—</p>
+        </div>
+        <div class="py-8 sm:py-10 sm:border-r border-b sm:border-b-0 border-neutral-800 text-left sm:px-8">
+          <h3 class="text-[11px] sm:text-xs tracking-ultra-wide uppercase text-gold font-sans font-semibold mb-3">MIDDLE NOTES</h3>
+          <p class="text-neutral-500 text-sm">—</p>
+        </div>
+        <div class="py-8 sm:py-10 text-left sm:pl-8">
+          <h3 class="text-[11px] sm:text-xs tracking-ultra-wide uppercase text-gold font-sans font-semibold mb-3">BASE NOTES</h3>
+          <p class="text-neutral-500 text-sm">—</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VIDEO ========== -->
+  <section class="py-20 md:py-32 px-5 sm:px-8 border-t border-neutral-900">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-[11px] sm:text-xs tracking-ultra-wide uppercase text-gold font-sans font-semibold mb-10 md:mb-14">THE VISION</h3>
+      <div class="relative bg-neutral-950 border border-neutral-800 overflow-hidden">
+        <video id="showcase-video" loop playsinline preload="metadata" class="w-full h-auto block">
+          <source src="videos/mr-yurimio-hero-video.MOV" type="video/mp4">
+        </video>
+        <!-- Play overlay -->
+        <button id="video-play-btn" class="absolute inset-0 flex items-center justify-center bg-black/50 transition-opacity duration-500 z-10">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-gold/80 flex items-center justify-center hover:bg-gold/10 transition-colors duration-300">
+            <svg class="w-6 h-6 sm:w-7 sm:h-7 text-gold ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </button>
+        <!-- Mute toggle -->
+        <button id="video-mute-btn" class="absolute bottom-4 right-4 z-10 hidden bg-black/60 backdrop-blur-sm border border-neutral-700 hover:border-gold text-neutral-400 hover:text-gold rounded-full w-10 h-10 items-center justify-center transition-colors duration-300">
+          <svg id="mute-icon" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+          <svg id="unmute-icon" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EMAIL SIGNUP ========== -->
+  <section class="py-20 md:py-32 px-5 sm:px-8 border-t border-neutral-900">
+    <div class="max-w-md mx-auto text-center">
+      <h3 class="text-[11px] sm:text-xs tracking-ultra-wide uppercase text-gold font-sans font-semibold mb-4">JOIN THE BEGINNING</h3>
+      <p class="text-neutral-500 text-xs sm:text-sm mb-8 max-w-sm mx-auto leading-relaxed">Be among the first to experience Yurimio. No noise, no gimmicks—only authenticity.</p>
+      <div class="mb-8">
+        <input type="email" id="email-input" placeholder="your@email.com"
+          class="w-full bg-transparent text-center text-neutral-300 text-sm pb-3 border-b border-neutral-700 focus:border-gold focus:text-white outline-none transition-colors duration-300 placeholder:text-neutral-600">
+      </div>
+      <button id="notify-btn" class="border border-white/30 text-white font-sans text-xs font-semibold tracking-ultra-wide uppercase px-10 py-3.5 hover:border-gold hover:text-gold transition-colors duration-300">
+        NOTIFY ME
+      </button>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="py-10 px-5 border-t border-neutral-900">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-neutral-700 text-[10px] sm:text-xs tracking-wider">&copy; 2026 Yurimio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

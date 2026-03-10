@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | Yurimio</title>
+  <meta name="description" content="Shop the Yurimio cologne collection. Premium handcrafted fragrances.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#C8A84E',
+            'gold-dark': '#A8893A',
+            'gold-light': '#D4B85A',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            'ultra-wide': '0.35em',
+            'mega-wide': '0.5em',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #000; }
+    ::selection { background-color: #C8A84E; color: #000; }
+  </style>
+</head>
+<body class="bg-black text-white font-sans antialiased">
+
+  <!-- ========== NAV ========== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-neutral-900">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
+      <a href="index.html" class="font-serif text-lg tracking-ultra-wide text-white hover:text-gold transition-colors">YURIMIO</a>
+      <div class="hidden sm:flex items-center gap-8">
+        <a href="shop.html" class="text-[11px] tracking-ultra-wide uppercase text-gold transition-colors">Shop</a>
+        <a href="cart.html" class="relative flex items-center gap-2 text-neutral-400 hover:text-gold transition-colors">
+          <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="cart-count text-[10px] font-semibold text-gold">0</span>
+        </a>
+        <a href="login.html" class="text-[11px] tracking-ultra-wide uppercase text-neutral-400 hover:text-gold transition-colors nav-auth-link">Sign In</a>
+      </div>
+      <button id="mobile-menu-btn" class="sm:hidden text-neutral-400 hover:text-gold transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-neutral-900 bg-black/95 backdrop-blur-md">
+      <div class="px-5 py-6 flex flex-col gap-5">
+        <a href="shop.html" class="text-sm tracking-ultra-wide uppercase text-gold transition-colors">Shop</a>
+        <a href="cart.html" class="text-sm tracking-ultra-wide uppercase text-neutral-300 hover:text-gold transition-colors flex items-center gap-3">Cart <span class="cart-count text-gold text-xs">0</span></a>
+        <a href="login.html" class="text-sm tracking-ultra-wide uppercase text-neutral-300 hover:text-gold transition-colors nav-auth-link">Sign In</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== SHOP HEADER ========== -->
+  <div class="pt-28 sm:pt-32 pb-12 sm:pb-16 px-5 sm:px-8 text-center">
+    <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light tracking-ultra-wide text-white mb-3">THE COLLECTION</h1>
+    <p class="text-neutral-500 text-xs tracking-ultra-wide uppercase">Shop Our Scents</p>
+  </div>
+
+  <!-- ========== PRODUCT: LEVERAGE ========== -->
+  <section class="px-5 sm:px-8 pb-24 md:pb-32">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-start">
+
+        <!-- Product Images -->
+        <div class="space-y-4">
+          <div class="aspect-[3/4] bg-neutral-950 border border-neutral-800 overflow-hidden">
+            <img id="main-product-img" src="images/leverage-image.JPEG" alt="Leverage Cologne by Yurimio" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <button class="aspect-square bg-neutral-950 border border-neutral-800 overflow-hidden hover:border-gold/50 transition-colors duration-300 product-thumb" data-img="images/leverage-image.JPEG">
+              <img src="images/leverage-image.JPEG" alt="Leverage" class="w-full h-full object-cover" loading="lazy">
+            </button>
+            <button class="aspect-square bg-neutral-950 border border-neutral-800 overflow-hidden hover:border-gold/50 transition-colors duration-300 product-thumb" data-img="images/leverage-by-yurimio.JPEG">
+              <img src="images/leverage-by-yurimio.JPEG" alt="Leverage by Yurimio" class="w-full h-full object-cover" loading="lazy">
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="pt-2 md:pt-8 md:sticky md:top-24">
+          <p class="text-[10px] sm:text-[11px] tracking-ultra-wide uppercase text-gold font-sans font-semibold mb-4">Yurimio Collection</p>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light tracking-wide text-white mb-3">Leverage</h2>
+          <p class="text-gold font-sans text-xl sm:text-2xl font-semibold mb-6">$30.00</p>
+
+          <div class="border-t border-neutral-800 pt-6 mb-6">
+            <p class="text-neutral-300 text-sm sm:text-base leading-relaxed font-light mb-6">
+              A luminous opening that settles into warmth, then lingers with depth and intention. Unmistakably distinct, quietly confident. Crafted for those who move with purpose.
+            </p>
+            <div class="grid grid-cols-2 gap-6 mb-8">
+              <div>
+                <h4 class="text-[10px] tracking-ultra-wide uppercase text-gold font-sans font-semibold mb-2">Longevity</h4>
+                <p class="text-neutral-400 text-xs sm:text-sm">8–12 hours</p>
+              </div>
+              <div>
+                <h4 class="text-[10px] tracking-ultra-wide uppercase text-gold font-sans font-semibold mb-2">Ingredients</h4>
+                <p class="text-neutral-400 text-xs sm:text-sm">Naturally derived</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="flex items-center gap-4 mb-6">
+            <span class="text-[10px] tracking-ultra-wide uppercase text-neutral-500 font-semibold">Qty</span>
+            <div class="flex items-center border border-neutral-800">
+              <button id="qty-minus" class="w-10 h-10 text-neutral-400 hover:text-gold flex items-center justify-center transition-colors text-sm">−</button>
+              <span id="qty-display" class="w-10 h-10 flex items-center justify-center text-white text-sm border-x border-neutral-800">1</span>
+              <button id="qty-plus" class="w-10 h-10 text-neutral-400 hover:text-gold flex items-center justify-center transition-colors text-sm">+</button>
+            </div>
+          </div>
+
+          <!-- Add to Cart -->
+          <button id="add-to-cart-btn"
+            data-product-id="leverage-001"
+            data-product-name="Leverage"
+            data-product-price="30.00"
+            data-product-image="images/leverage-image.JPEG"
+            class="w-full bg-gold text-black font-sans text-xs sm:text-sm font-semibold tracking-ultra-wide uppercase py-4 hover:bg-gold-light transition-colors duration-300 mb-4">
+            ADD TO CART
+          </button>
+
+          <a href="cart.html" id="go-to-cart-link" class="hidden w-full border border-gold/60 text-gold font-sans text-xs sm:text-sm font-semibold tracking-ultra-wide uppercase py-4 hover:bg-gold hover:text-black transition-colors duration-300 text-center block">
+            VIEW CART
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="py-10 px-5 border-t border-neutral-900">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-neutral-700 text-[10px] sm:text-xs tracking-wider">&copy; 2026 Yurimio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // --- Quantity Controls ---
+    let qty = 1;
+    const qtyDisplay = document.getElementById('qty-display');
+    document.getElementById('qty-minus').addEventListener('click', () => {
+      if (qty > 1) { qty--; qtyDisplay.textContent = qty; }
+    });
+    document.getElementById('qty-plus').addEventListener('click', () => {
+      if (qty < 20) { qty++; qtyDisplay.textContent = qty; }
+    });
+
+    // --- Add to Cart ---
+    const addBtn = document.getElementById('add-to-cart-btn');
+    const goToCartLink = document.getElementById('go-to-cart-link');
+    addBtn.addEventListener('click', () => {
+      const product = {
+        id: addBtn.dataset.productId,
+        name: addBtn.dataset.productName,
+        price: parseFloat(addBtn.dataset.productPrice),
+        image: addBtn.dataset.productImage,
+      };
+      window.YurimioCart.add(product, qty);
+      window.YurimioCart.updateAllCounts();
+      addBtn.textContent = 'ADDED ✓';
+      addBtn.classList.remove('bg-gold', 'hover:bg-gold-light');
+      addBtn.classList.add('bg-gold/20', 'text-gold', 'border', 'border-gold');
+      goToCartLink.classList.remove('hidden');
+      setTimeout(() => {
+        addBtn.textContent = 'ADD TO CART';
+        addBtn.classList.add('bg-gold', 'hover:bg-gold-light');
+        addBtn.classList.remove('bg-gold/20', 'text-gold', 'border', 'border-gold');
+      }, 2000);
+    });
+
+    // --- Thumbnail Switcher ---
+    document.querySelectorAll('.product-thumb').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        document.getElementById('main-product-img').src = thumb.dataset.img;
+        document.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('border-gold/50'));
+        thumb.classList.add('border-gold/50');
+      });
+    });
+  </script>
+</body>
+</html>
