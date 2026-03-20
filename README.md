@@ -8,76 +8,89 @@
 
 ## What Was Built
 
-A fully designed, mobile-responsive e-commerce website for selling your cologne brand, Yurimio. The site includes a homepage, product shop page, shopping cart, and user sign-in — all ready for customers to browse and buy.
+A fully designed, mobile-responsive e-commerce website for your cologne brand, Yurimio. The site includes a homepage, product shop page, and shopping cart with Stripe checkout — ready for customers to browse, add to bag, and pay.
 
-The site is live and free to host. No coding is required from you to manage it going forward.
+The site is live and free to host. No coding is required from you.
 
 ---
 
 ## Technologies Used
 
-- **HTML, CSS (Tailwind), JavaScript** — The site is built with clean, modern front-end code. No heavy frameworks, which keeps it fast and simple to maintain.
-- **GitHub Pages** — Free hosting provided by GitHub. Your site is publicly accessible at no cost. Used by millions of sites worldwide.
-- **Sanity CMS** (to be connected) — A headless content management system. This is where you'll manage your products (add colognes, edit prices, upload photos) through a simple visual dashboard — no code needed. Sanity's free tier supports up to 3 team members and 10k API requests/day, which is more than enough for a growing store.
-- **Stripe** (to be connected) — The industry-standard payment processor used by companies like Amazon, Google, and Shopify. Stripe handles all payment security and compliance for you. No monthly fee — they only take 2.9% + 30¢ per transaction, so you only pay when you make money.
+- **HTML, CSS (Tailwind), JavaScript** — Clean, modern front-end code. No heavy frameworks, which keeps the site fast and easy to maintain.
+- **GitHub Pages** — Free website hosting provided by GitHub. Used by millions of sites worldwide.
+- **Stripe** — The industry-standard payment processor used by Amazon, Google, and Shopify. Handles all payment security for you. No monthly fee — they only take 2.9% + 30¢ per sale, so you only pay when you make money.
 
 ---
 
-## What You Need To Do
+## What You Need To Do (2 Steps)
 
-There are two accounts you need to create so I can connect payments and product management to your site. Both are free.
+### Step 1: Create and List Your Product on Stripe
 
-**1. Create a Sanity account** — Go to sanity.io, sign up, and send me your Project ID and Dataset name. This gives you a dashboard where you can add, edit, and remove colognes without touching any code.
+This is how you get paid when someone buys a cologne.
 
-**2. Create a Stripe account** — Go to stripe.com, sign up and verify your identity, then go to Developers → API Keys and send me your Publishable Key. Once connected, customer payments go directly to your bank account.
+1. Go to https://stripe.com and create an account
+2. Stripe will ask you to verify your identity (name, address, bank account for payouts) — this is standard for any business that accepts payments online
+3. Once you're in the dashboard, click **"Products"** on the left side
+4. Click **"+ Add product"**
+5. Set the name to **Leverage**, the price to **$30**, and select **One-time payment**
+6. Save it, then copy the **Price ID** (it starts with `price_`)
+7. Send me that Price ID and I'll connect it to the checkout button on your site
 
-**3. (Optional) Buy a custom domain** — If you want a clean URL like www.colognesbyyurimio.com instead of the free GitHub address, you can purchase one from Namecheap or GoDaddy for about $10–15/year. I can help you set up a Namecheap (recommended) account and get your custom domain. Once you have it, I can work with you to connect it to this site.
+Once connected, when a customer buys a cologne, the money goes directly to the bank account you set up in Stripe. Stripe also sends your customers an automatic email receipt after every purchase.
 
----
+### Step 2: Get a Custom Domain Name (Your Website Address)
 
-## Taking It To The Next Level
+Right now your site is live at a free address. If you want a clean, professional address like **www.colognesbyyurimio.com**, you need to buy a domain name.
 
-Once the base site is connected and live, here are proven next steps to grow the brand:
-
-**SEO (Search Engine Optimization)** — The site is already built with clean semantic HTML, which is the foundation Google looks for. Adding a blog through Sanity (articles about fragrance, brand story, grooming tips) is one of the highest-ROI moves for organic traffic. According to HubSpot's 2024 marketing report, businesses that blog get 55% more website visitors than those that don't.
-
-**Social media integration** — Linking your Instagram and TikTok directly on the site turns followers into customers. The fragrance market on social media is massive — the global fragrance market is projected to hit $72 billion by 2028 (Statista), and independent brands are capturing more market share every year through direct-to-consumer channels.
-
-**Email marketing** — The site already has an email signup section. Connecting it to a free tool like Mailchimp (free up to 500 contacts) lets you send launch announcements, restocks, and promotions. Email marketing has an average ROI of $36 for every $1 spent (Litmus, 2023).
-
-**Analytics** — Adding Google Analytics (free) lets you see exactly how many people visit your site, where they come from, and what they click on. This data is essential for knowing what's working.
-
----
-
-## Full Ownership & Transfer Options
-
-This website is 100% yours. The code lives in a GitHub repository under your name, and you have full access to everything.
-
-If at any point you want to move to a different platform for more control or features, here are your options:
-
-**Shopify** — The most popular e-commerce platform. You can migrate the design and products to Shopify for about $39/month. Shopify handles hosting, payments, inventory, and shipping all in one place. Best option if the brand scales and you want everything managed from one dashboard.
-
-**WordPress + WooCommerce** — A free, open-source option. You'd need hosting (about $5–15/month from providers like Bluehost or SiteGround), but you get full control over every aspect of the site. WooCommerce powers about 36% of all online stores worldwide.
-
-**Squarespace** — Clean, design-focused platform at $33/month with built-in e-commerce. Good middle ground if you want simplicity with a professional look.
-
-Any of these migrations are straightforward. The product photos, copy, and branding translate directly — nothing is locked into the current setup.
+1. Go to https://www.namecheap.com or https://www.godaddy.com
+2. Use the search bar to find and buy the address you want (costs about $10–15/year)
+3. Once you've purchased it, send me:
+   - The domain name you bought (e.g. colognesbyyurimio.com)
+   - Which provider you used (Namecheap or GoDaddy)
+4. I'll either walk you through connecting it, or I can send you a short video showing exactly what to do — your choice
 
 ---
 
-## Costs Summary
+## Costs
 
-- Website hosting: **Free** (GitHub Pages)
-- Product management: **Free** (Sanity CMS free tier)
+- Website hosting: **Free** (GitHub Pages — no charge, ever)
 - Payment processing: **2.9% + 30¢ per sale** (Stripe — only when you make a sale)
-- Custom domain (optional): **~$10–15/year**
+- Domain name: **~$10–15/year** (one-time annual payment)
 
 Example: You sell a cologne for $30 → Stripe takes $1.17 → you keep **$28.83**.
 
 ---
 
-## Need Changes or Have Questions?
+## What's Included & What's Possible Next
 
-Reach out to me anytime. Whether it's design tweaks, adding new pages, connecting Sanity/Stripe, or anything else — I'm here to help. This is your brand and your site, and I want to make sure it represents exactly what you envision.
+**What's done now:**
+- Homepage with brand story, founder section, and video
+- Product page for Leverage ($30)
+- Shopping cart with Stripe checkout
+- Email signup section
+- Mobile-friendly on all devices
+- Scroll animations and premium gold/black design
+
+**Future upgrades (if you want them later):**
+- Customer accounts and order history
+- Additional products and collections
+- Blog for SEO (helps you show up on Google)
+- Email marketing with Mailchimp (free up to 500 contacts)
+- Google Analytics to track visitors
+- Social media links (Instagram, TikTok)
+
+None of these are required to launch — they're just options for when you're ready to grow.
+
+---
+
+## Full Ownership
+
+This website is 100% yours. Nothing is locked into any platform. If you ever want to move to Shopify, WordPress, Squarespace, or any other platform, the design, photos, and branding all transfer. You're not stuck with anything.
+
+---
+
+## Need Changes?
+
+Reach out to me anytime — design tweaks, adding products, connecting your domain, whatever you need. This is your brand and I want to make sure it's exactly how you want it.
 
 **Adam Lovell**
