@@ -211,8 +211,8 @@
       stripe.redirectToCheckout({
         lineItems: [{ price: STRIPE_PRICE_ID, quantity: totalQty }],
         mode: 'payment',
-        successUrl: window.location.origin + '/colognes-by-yurimio/index.html?checkout=success',
-        cancelUrl: window.location.origin + '/colognes-by-yurimio/cart.html?checkout=cancelled',
+        successUrl: window.location.origin + '/index.html?checkout=success',
+        cancelUrl: window.location.origin + '/cart.html?checkout=cancelled',
       }).then(result => {
         if (result.error) {
           alert(result.error.message);
